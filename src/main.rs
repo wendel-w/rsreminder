@@ -5,7 +5,7 @@ use colored::CustomColor;
 use directories::ProjectDirs;
 use rand::RngExt;
 use serde::Deserialize;
-use std::path::PathBuf;
+// use std::path::PathBuf;
 // use std::any::type_name_of_val;
 use std::fs;
 use terminal_size::{Width, terminal_size};

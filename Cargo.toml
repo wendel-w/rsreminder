@@ -1,6 +1,6 @@
 [package]
 name = "rsreminder"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "A small cli app that displays quotes/bible verses"
 license = "MIT"                                                   # or "MIT OR Apache-2.0", or use license-file = "LICENSE"
