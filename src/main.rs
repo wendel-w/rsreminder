@@ -2,8 +2,10 @@ use clap::Parser;
 use colored::ColoredString;
 use colored::Colorize;
 use colored::CustomColor;
+use directories::ProjectDirs;
 use rand::RngExt;
 use serde::Deserialize;
+use std::path::PathBuf;
 // use std::any::type_name_of_val;
 use std::fs;
 use terminal_size::{Width, terminal_size};
@@ -111,9 +113,12 @@ struct Args {
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // let config_path = "/home/vendel/.config/rsreminder/config.toml";
-    let config_path = "config.toml";
-    // let config_content = fs::read_to_string("config.toml")?;
+    let proj_dirs = ProjectDirs::from("com", "wendel-w", "rsreminder")
+        .ok_or("Could not determine system config directory")?;
+
+    let config_path = proj_dirs.config_dir().join("config.toml");
+    // let config_path = "config.toml";
+
     let config_content = fs::read_to_string(config_path)?;
     let config: ConfigToml = toml::from_str(&config_content)?;
 
@@ -128,6 +133,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let random_passage: Passage;
     let passages = config.passage.clone();
     let nr_passages = passages.len();
+    println!("{}", nr_passages);
     if nr_passages <= 0 {
         println!("No passages found in config!");
         return Ok(());
