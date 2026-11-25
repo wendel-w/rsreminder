@@ -11,7 +11,7 @@ The program selects and prints random verses/quotes from a config file.
 
 *  Install it with cargo
 ```bash
-cargo install --git [https://github.com/]https://github.com/wendel-w/rsreminder
+cargo install --git https://github.com/wendel-w/rsreminder
 ```
 * And don't forget to copy `config.toml`, its a template config, with some extra documentation
 
